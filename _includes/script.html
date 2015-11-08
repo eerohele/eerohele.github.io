@@ -1,0 +1,39 @@
+<script>
+  // This is prototype-quality code hacked together in a couple of minutes.
+  // Dragons and all that.
+
+  NodeList.prototype.forEach = Array.prototype.forEach
+
+  function ready(fn) {
+    if (document.readyState !== 'loading'){
+      fn()
+    } else {
+      document.addEventListener('DOMContentLoaded', fn)
+    }
+  }
+
+  function applyMediaQuery(mq) {
+    // Quick and dirty responsive sidenotes.
+    var sidenotes = document.querySelectorAll('.sidenote')
+
+    if (mq.matches) {
+      sidenotes.forEach(function (el) {
+        document.querySelector('.post-footer').appendChild(el)
+      })
+    } else {
+      sidenotes.forEach(function (el) {
+        var number = el.getAttribute('data-sidenote-number')
+        var sn = document.querySelector('#sn-ref-' + number)
+        sn.parentNode.insertBefore(el, sn)
+      })
+    }
+  }
+
+  function initialize() {
+    var mq = window.matchMedia('(max-width: 1080px)')
+    mq.addListener(applyMediaQuery)
+    applyMediaQuery(mq)
+  }
+
+  ready(initialize)
+</script>
