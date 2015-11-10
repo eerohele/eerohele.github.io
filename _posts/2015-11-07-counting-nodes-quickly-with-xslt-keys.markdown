@@ -123,7 +123,7 @@ The fastest method for counting nodes with XSLT that I know of is to create a ke
 -->
 {% endhighlight %}
 
-This way, we only have to walk the tree once: when compiling the `informaltable-by-role` key. The information about the relative position of each node is saved when creating the key {% sidenote I don't actually know that this is true, but I assume it must do something like that because it's so much faster.%} . That's why we don't need to walk the tree any more when counting the tables.
+This way, we only have to walk the tree once: when compiling the `informaltable-by-role` key. The information about the relative position of each node is saved when creating the key[^1] . That's why we don't need to walk the tree any more when counting the tables.
 
 You can read the code that counts the tables as:
 
@@ -175,6 +175,8 @@ current node, plus the current element.
 {% endhighlight %}
 
 It's faster.
+
+[^1]: I don't actually know that this is true, but I assume it must do something like that because it's so much faster.
 
 [docbook-guide]: http://sourceforge.net/p/docbook/code/HEAD/tree/trunk/defguide/zh/source/defguide.xml
 [xpath2-nodecomp]: http://www.w3.org/TR/xpath20/#id-node-comparisons

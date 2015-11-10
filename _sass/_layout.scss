@@ -247,9 +247,17 @@
     }
 }
 
-.post-footer {
-    .sidenote:first-of-type {
-        border-top: 1px solid $grey-color-light;
-        padding-top: ($spacing-unit / 2);
+/**
+ * Footnotes
+ */
+
+.footnotes {
+    border-top: 1px solid $grey-color-light;
+    font-family: $sans-font-family;
+    font-size: $small-font-size;
+    padding-top: ($spacing-unit / 2);
+
+    ol {
+        margin-left: 0;
     }
 }
